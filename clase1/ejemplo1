@@ -1,0 +1,38 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+//#include
+using namespace std;
+
+int main()
+{
+    int ct,t,d;
+    float s;
+    do{
+        cout<<"Ingrese cantidad de terminos:"<<endl;
+        cin>>ct;
+    }while(ct<=0);
+    s=0;
+    d=1;
+    for (t=1;t<=ct;t++){
+        if(t%2!=0){
+            //Cuando solo es un if puede estar sin corchetes tanto
+            //el if como el else
+           s=s+1.0/d; 
+        }else{
+            s=s-1.0/d;
+        }
+        d=d+2;
+    }
+    cout<<"El valor de la sumatoria es:"<<s<<endl;
+    return 0;
+}
+
+
+
