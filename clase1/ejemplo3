@@ -1,0 +1,33 @@
+
+/*
+    Título: Tabla de multiplicar v2
+    Autor: Hinojoza 6M2
+    Descripción: La tabla de multiplicar de dos numeros que entra en 
+    el input v2
+
+ */
+
+#include <iostream>
+
+using namespace std;
+void mostrarTabla(int n)
+{
+    int i;
+    cout<<"Tabla de multiplicar de "<<n<<endl;
+    for (i=0;i<=12;i++){
+        cout<<n<<"x"<<i<<"="<<(i*n)<<endl;
+    }
+}
+
+int main()
+{
+    int x;
+    cout<<"Ingrese numero:"<<endl;
+    cin>>x;
+    mostrarTabla(x);
+    cout<<"Ingrese numero:"<<endl;
+    cin>>x;
+    mostrarTabla(x);
+    return 0;
+}
+
