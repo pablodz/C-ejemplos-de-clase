@@ -1,0 +1,30 @@
+
+/*
+    Título: Tabla de multiplicar
+    Autor: Hinojoza 6M2
+    Descripción: La tabla de multiplicar de un número que entra en 
+    el input
+
+ */
+
+#include <iostream>
+//#include
+using namespace std;
+void mostrarTabla(int n)
+{
+    int i;
+    cout<<"Tabla de multiplicar de "<<n<<endl;
+    for (i=0;i<=n;i++){
+        cout<<n<<"x"<<i<<"="<<(i*n)<<endl;
+    }
+}
+
+int main()
+{
+    int x;
+    cout<<"Ingrese numero:"<<endl;
+    cin>>x;
+    mostrarTabla(x);
+    return 0;
+}
+
