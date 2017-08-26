@@ -1,0 +1,51 @@
+/*
+    Título: Modificación de arreglos
+    Autor: Hinojoza 6M2
+    Descripción: Creamos un arreglo 
+    Conclusion: Aprender a Ingresar y mostrar datos de arreglos
+ */
+
+#include <iostream>
+
+//USO DE CONSTANTE EL ESTANDAR ES PONER LA COSNTANTE EN MAYUSCULAS
+
+using namespace std;
+const int MAX=10;
+
+void Ingresar (float T[MAX],int n)
+{
+    int i;
+    for(i=0;i<n;i++)
+    {
+        cout<<"Ingrese tempertarura "<<i<<": ";
+        cin>>T[i];
+    }
+}
+
+void Mostrar (float T[MAX],int n)
+{
+    int i;
+    for(i=0;i<n;i++)
+    {
+        cout<<T[i]<<" ";
+    }
+    cout<<endl;
+}
+int IngresarCantidadDatos()
+{
+    int n;
+    do
+    {
+        cout<<"Ingresar cantidad de datos: ";
+        cin>>n;
+    }while(n<=0||n>MAX);
+}
+int main()
+{
+   float Temp[MAX];
+   int nt;
+   nt=IngresarCantidadDatos();
+   Ingresar(Temp,nt);
+   Mostrar(Temp,nt);
+   return 0;
+}
