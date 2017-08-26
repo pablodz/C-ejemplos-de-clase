@@ -39,6 +39,7 @@ int IngresarCantidadDatos()
         cout<<"Ingresar cantidad de datos: ";
         cin>>n;
     }while(n<=0||n>MAX);
+    return n;
 }
 int main()
 {
