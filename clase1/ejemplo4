@@ -1,0 +1,49 @@
+
+/*
+    Título: Tabla de multiplicar v3
+    Autor: Hinojoza 6M2
+    Descripción: Al ejemplo 3 le editamos el orden de las funciones
+    cambiamos el orden de mostrarTabla despues del main a ver 
+    si detecta algun error
+    Conclusion: Al compilar no detecta, pero luego arreglaremos Conclusion
+    los pasos mencionados más adelante
+ */
+
+#include <iostream>
+
+using namespace std;
+
+//Cambio de orden el main
+//Al compilar no detecta mostrar Tabla
+//Arreglar: se tiene que hacer el llamado a la funcion para
+//          hacer el prototipo de la funcion
+
+////////////////////////////////////////////////
+void mostrarTabla(int);//prototipo de la funcion
+////////////////////////////////////////////////
+
+//Si quiero evitar el prototipo de la funcion simplemente
+//que la funcion principal este al final
+int main()
+{
+    int x;
+    cout<<"Ingrese numero:"<<endl;
+    cin>>x;
+    mostrarTabla(x);
+    cout<<"Ingrese numero:"<<endl;
+    cin>>x;
+    mostrarTabla(x);
+    return 0;
+}
+
+//Ahora mostrarTabla esta despues de la funcion principal
+//para poder indexarla correctamente tenemos que hacer
+//el prototipo de la funcion
+void mostrarTabla(int n)
+{
+    int i;
+    cout<<"Tabla de multiplicar de "<<n<<endl;
+    for (i=0;i<=12;i++){
+        cout<<n<<"x"<<i<<"="<<(i*n)<<endl;
+    }
+}
