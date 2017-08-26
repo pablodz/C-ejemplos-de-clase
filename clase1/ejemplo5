@@ -1,0 +1,57 @@
+/*
+    Título:
+    Autor: Hinojoza 6M2
+    Descripción: Se ingresa un numero entero positivo con chequeo
+                  y se cuenta cuantas veces aparece en el numero el digito
+                  pedido
+    Conclusion: 
+ */
+
+#include <iostream>
+using namespace std;
+
+long int IngresarEnteroPositivo()
+{
+    long int n;
+    do{
+        cout<<"Ingrese un entero positivo: ";
+        cin>>n;
+    }while(n<=0);
+    return n;//Esta sentencia permite retornar el valor de "n"
+}
+int IngresarDigito()
+{
+    int d;
+    do
+    {
+        cout<<"Ingresar un dígito: ";
+        cin>>d;
+    }while(d<0||d>9);//Aquí verificamos que sea si o si un digito
+    return d;//Finalmente, ya chequeado retornamos "d"
+}
+
+int contar(long int n, int d)
+{
+    int c;
+    c=0;
+    while(n!=0)
+    {
+        if (n%10==d){
+           c++;
+        }         
+        n=n/10;
+    }
+    return c;//retornamos "C"
+}
+
+int main()
+{
+   long int num;//necesitamos más espacio para el num para que no se estanque
+                //tan rapidamente
+   int dig,cont;
+   num=IngresarEnteroPositivo();//Devuelve algo con return y lo almacena en num
+   dig=IngresarDigito();//Ingresa digito y lo guarda en dig
+   cont=contar(num,dig);
+   cout<<dig<<" Se repite "<<cont<<" veces "<<endl;
+   return 0;
+}
