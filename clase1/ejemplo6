@@ -1,0 +1,51 @@
+/*
+    Título:Dimensiones de un rectangulo
+    Autor: Hinojoza 6M2
+    Descripción:Calcular diagonal perimetro y superficie de un rectangulo. 
+                Uso de valores por referencia usados en la funcion 
+                "void IngresarLados(float &L,float &A)"
+    Conclusion: Para poder retornar más de dos valores
+                usamos los referencias de funciones
+ */
+
+#include <iostream>
+//NUEVA LIBRERIA ADJUNTA
+#include <math.h>
+
+using namespace std;
+void IngresarLados(float &L,float &A)//Para devolver más valores que un return se ponen
+                                    //valores por referencia "&L" y "&A"
+{
+    do
+    {
+        cout<<"Ingreso largo del rectangulo:";
+        cin>>L;
+    }while(L<=0);
+    do
+    {
+        cout<<"Ingreso ancho del rectangulo:";
+        cin>>A;
+    }while(A<=0||A>=L);
+}
+//En la funcion Calcular Los parametros "D", "P" y "S"
+//son desconocidos por lo que se ponen con ampersan &&&&
+void Calcular(float L,float A,float &D,float &P,float &S)
+{
+    D=sqrt(pow(L,2)+pow(A,2));//esto funciona al adjuntar la libreria math.h
+    //O también
+    //D=sqrt(L*L+A*A);
+    P=2*(L+A);
+    S=L*A;
+}
+
+int main()
+{
+   float largo,ancho,diagonal,perimetro,superficie;
+    IngresarLados(largo,ancho);
+    Calcular(largo,ancho,diagonal,perimetro,superficie);
+    cout<<"Diagonal: "<<diagonal<<endl;
+    cout<<"Perimetro: "<<perimetro<<endl;
+    cout<<"Superficie: "<<superficie<<endl;
+    
+   return 0;
+}
