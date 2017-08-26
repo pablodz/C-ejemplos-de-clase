@@ -4,6 +4,7 @@
     Descripción: Se ingresa un numero entero positivo con chequeo
                   y se cuenta cuantas veces aparece en el numero el digito
                   pedido
+                  //USANDO RETURN
     Conclusion: 
  */
 
