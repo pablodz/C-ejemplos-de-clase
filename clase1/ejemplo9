@@ -1,0 +1,99 @@
+/*
+    Título: Modificación de arreglos v3. incluye ordenar arreglo
+    Autor: Hinojoza 6M2
+    Descripción: Creamos un arreglo 
+    Conclusion: Aprender a Ingresar y mostrar datos de arreglos
+ */
+
+#include <iostream>
+
+//USO DE CONSTANTE EL ESTANDAR ES PONER LA COSNTANTE EN MAYUSCULAS
+
+using namespace std;
+const int MAX=10;
+
+void Ingresar (float T[MAX],int n)
+{
+    int i;
+    for(i=0;i<n;i++)
+    {
+        cout<<"Ingrese tempertarura "<<i<<": ";
+        cin>>T[i];
+    }
+}
+
+void Mostrar (float T[MAX],int n)
+{
+    int i;
+    for(i=0;i<n;i++)
+    {
+        cout<<T[i]<<" ";
+    }
+    cout<<endl;
+}
+int IngresarCantidadDatos()
+{
+    int n;
+    do
+    {
+        cout<<"Ingresar cantidad de datos: ";
+        cin>>n;
+    }while(n<=0||n>MAX);
+    return n;
+}
+float HallarPromedio(float T[MAX], int n)
+{
+    float s;
+    int i;
+    s=0;
+    for(i=0;i<n;i++)
+    {
+        s+=T[i];//s=s+Ti
+    }
+    return s/n;
+}
+float HallarMayor(float T[MAX],int n)
+{
+    float m;
+    int i;
+    m=T[0];
+    for(i=1;i<n;i++)
+    {
+        if (T[i]>m){
+            m=T[i];
+        }
+    }
+    return m;
+}
+void Ordenar(float T[MAX],int n)
+{
+    int i,j;
+    float x;
+    //Algoritmo de la burbuja
+    for(i=0;i<n-1;i++)
+    {
+        for(j=i+1;j<n;j++)
+        {
+            if (T[i]>T[j]){
+                x=T[i];
+                T[i]=T[j];
+                T[j]=x;
+            }
+        }
+    }
+}
+int main()
+{
+   float Temp[MAX],prom,mayor;
+   int nt;
+   nt=IngresarCantidadDatos();
+   Ingresar(Temp,nt);
+   Mostrar(Temp,nt);
+   prom=HallarPromedio(Temp,nt);
+   cout<<"El promedio es: "<<prom<<endl;
+   mayor=HallarMayor(Temp,nt);
+   cout<<"El dato mayor es: "<<mayor<<endl;
+   Ordenar(Temp,nt);
+   Mostrar(Temp,nt);
+   return 0;
+}
