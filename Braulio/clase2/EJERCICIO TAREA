@@ -1,0 +1,50 @@
+/*
+Título: Ejercicio propuesto de clase 1
+Autor: Braulio 6M3
+Descripción: Descripción en la página
+Conclusion: ...
+*/
+#include "stdafx.h"
+#include "stdio.h"
+#include "iostream"
+#include "math.h"
+
+const float VELOCIDAD=700;//velocidad promedio 700 km/h
+const float DISTANCIA_MAR=1800; //1800 metros sobre el mar
+
+float ecuacion(float, float);
+float ecuacion2(float, float);
+int main()
+{
+	float a,v,d,e;
+	float gravedad;
+	gravedad = 10;
+	printf_s("Ingrese la altura del vuelo(m) :");
+	scanf_s("%f", &a);
+	printf_s("Ingrese velocidad del vuelo(km/h) :");
+	scanf_s("%f", &v);
+	printf_s("Ingrese la distancia del barco en reposo (m):");
+	scanf_s("%f", &d);
+	printf_s("Ingrese el espacio que ocupa el barco(m) :");
+	scanf_s("%f", &e);
+
+	
+
+
+
+	scanf_s("%f");
+}
+float ecuacion(float g,float  t)//Empieza la ecuacion
+{
+	float variable;
+	variable = 1 / 2 * g* pow(t, 2);
+	return variable;
+}
+
+float ecuacion2(float e, float t)
+{
+	return e / t;
+}
+
+
+
