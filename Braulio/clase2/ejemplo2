@@ -1,0 +1,33 @@
+Autor: Braulio 6M3
+Descripción: Descripción en la página
+Conclusion: ...
+*/
+#include "stdafx.h"
+#include "stdio.h"
+#include "iostream"
+#include "math.h"
+
+
+float fx(float x){
+	float resultado;
+	if (x > 0 && x < 16){
+		resultado = pow(x, 3) + 2;
+	}
+	else if(x==16){
+		resultado = pow(x, 2) - 10;
+	}
+	else if (x>16){
+		resultado = pow(x, 0.5) + 6;
+	}
+	return resultado;
+}
+
+int main()
+{
+	float x, y, z;
+	printf_s("Ingrese la variable X:");
+	scanf_s("%f", &x);
+	z = fx(x);
+	printf_s("El valor de F(x): %f",z);
+	scanf_s("%f");
+}
