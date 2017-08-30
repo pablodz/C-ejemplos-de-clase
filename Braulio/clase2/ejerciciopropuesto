@@ -1,0 +1,35 @@
+/*
+Título: Ejercicio propuesto de clase 1
+Autor: Braulio 6M3
+Descripción: Descripción en la página
+Conclusion: ...
+*/
+#include "stdafx.h"
+#include "stdio.h"
+#include "iostream"
+#include "math.h"
+
+
+int main()
+{
+	float x, y,z;
+	printf_s("Ingrese la coordenada X: ");
+	scanf_s("%f", &x);
+	printf_s("Ingrese la coordenada Y:");
+	scanf_s("%f", &y);
+	z = sqrt(pow(x,2)+pow(y,2));
+	if (z <= 15.0 && z > 10.0) {
+		printf_s("El puntaje obtenido es: 5 puntos.");
+	}
+	if (z <= 10.0 && z > 5.0){
+		printf_s("El puntaje obtenido es: 20 puntos.");
+	}
+	if (z <= 5.0 &&z>0){
+		printf_s("El puntaje obtenido es: 50 puntos.");
+	}
+	if (z > 15.0){
+		printf_s("El puntaje obtenido es: 0 puntos.");
+	}	
+	scanf_s("%f");
+}
+
