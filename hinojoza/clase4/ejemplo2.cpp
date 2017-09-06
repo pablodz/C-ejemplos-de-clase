@@ -48,7 +48,7 @@ void rectangulo::ingresar()
 		cin >> Largo;
 	} while (Largo <= 0);
 	do {
-		cout << "Ingrese largo";
+		cout << "Ingrese Ancho";
 		cin >> Largo;
 	} while (Ancho <= 0||Ancho>=Largo);
 }
