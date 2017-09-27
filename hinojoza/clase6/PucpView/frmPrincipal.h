@@ -1,4 +1,8 @@
 #pragma once
+//necesita la pantalla 2 porque trae cosas de ahi
+//objetos y demás 
+#include "frmNuevoIng.h"
+/////////////////////////////
 
 namespace PucpView {
 
@@ -8,6 +12,9 @@ namespace PucpView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	////////////////
+	using namespace PucpController;
+	//////////////////
 
 	/// <summary>
 	/// Resumen de frmPrincipal
@@ -18,6 +25,9 @@ namespace PucpView {
 		frmPrincipal(void)
 		{
 			InitializeComponent();
+			///////////////////////////////////////////
+			gest = gcnew GestorIng;
+			///////////////////////////////////////////
 			//
 			//TODO: agregar código de constructor aquí
 			//
@@ -46,6 +56,9 @@ namespace PucpView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column4;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
+	////////////////////////////////////
+	public: GestorIng^ gest;
+	//////////////////////////////////
 
 
 	private:
@@ -62,14 +75,14 @@ namespace PucpView {
 		void InitializeComponent(void)
 		{
 			this->datos = (gcnew System::Windows::Forms::DataGridView());
-			this->btnNuevo = (gcnew System::Windows::Forms::Button());
-			this->btnVerTodos = (gcnew System::Windows::Forms::Button());
-			this->txtCodB = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->btnNuevo = (gcnew System::Windows::Forms::Button());
+			this->btnVerTodos = (gcnew System::Windows::Forms::Button());
+			this->txtCodB = (gcnew System::Windows::Forms::Label());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->datos))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -85,6 +98,26 @@ namespace PucpView {
 			this->datos->Size = System::Drawing::Size(581, 258);
 			this->datos->TabIndex = 1;
 			// 
+			// Column1
+			// 
+			this->Column1->HeaderText = L"Codigo";
+			this->Column1->Name = L"Column1";
+			// 
+			// Column2
+			// 
+			this->Column2->HeaderText = L"Nombre";
+			this->Column2->Name = L"Column2";
+			// 
+			// Column4
+			// 
+			this->Column4->HeaderText = L"Apellido";
+			this->Column4->Name = L"Column4";
+			// 
+			// Column3
+			// 
+			this->Column3->HeaderText = L"Especialidad";
+			this->Column3->Name = L"Column3";
+			// 
 			// btnNuevo
 			// 
 			this->btnNuevo->Location = System::Drawing::Point(111, 413);
@@ -93,6 +126,7 @@ namespace PucpView {
 			this->btnNuevo->TabIndex = 2;
 			this->btnNuevo->Text = L"Nuevo";
 			this->btnNuevo->UseVisualStyleBackColor = true;
+			this->btnNuevo->Click += gcnew System::EventHandler(this, &frmPrincipal::btnNuevo_Click);
 			// 
 			// btnVerTodos
 			// 
@@ -120,26 +154,6 @@ namespace PucpView {
 			this->textBox1->Size = System::Drawing::Size(213, 20);
 			this->textBox1->TabIndex = 5;
 			// 
-			// Column1
-			// 
-			this->Column1->HeaderText = L"Codigo";
-			this->Column1->Name = L"Column1";
-			// 
-			// Column2
-			// 
-			this->Column2->HeaderText = L"Nombre";
-			this->Column2->Name = L"Column2";
-			// 
-			// Column4
-			// 
-			this->Column4->HeaderText = L"Apellido";
-			this->Column4->Name = L"Column4";
-			// 
-			// Column3
-			// 
-			this->Column3->HeaderText = L"Especialidad";
-			this->Column3->Name = L"Column3";
-			// 
 			// frmPrincipal
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -152,6 +166,7 @@ namespace PucpView {
 			this->Controls->Add(this->datos);
 			this->Name = L"frmPrincipal";
 			this->Text = L"frmPrincipal";
+			this->Load += gcnew System::EventHandler(this, &frmPrincipal::frmPrincipal_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->datos))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -160,5 +175,43 @@ namespace PucpView {
 #pragma endregion
 	private: System::Void label1_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
-	};
+	private: System::Void frmPrincipal_Load(System::Object^  sender, System::EventArgs^  e) {
+	}
+	private: System::Void btnNuevo_Click(System::Object^  sender, System::EventArgs^  e) {
+		///////////////////////////////
+		//Esto no deberia hacerse aca pero por tiempo aqui será, normalmente
+		//seria en el .cpp del .h
+		frmNuevoIng^ ven = gcnew frmNuevoIng();
+		//Para abrir la siguiente ventana
+		ven->ShowDialog();
+		Ingeniero^ x = ven->nuevoIng;
+		gest->agregarIng(x);
+		mostrarDatos();
+		///////////////////////////////
+	}
+	//////////////////////////////
+			 private: void mostrarDatos()
+			 {
+				 //datos->Rows->Clear; //Primero que lo limpie todo
+				 int cant = gest->obtenerCantIng();//para saber cuantos ingenieros tengo
+				 int i;
+				 Ingeniero^ x;
+				 //voy a declarar un arreglo de cadenas
+				 array<String^>^ fila = gcnew array<String^>(4);
+				 //ESTO ME CREA UN ARREGLO DE CADENAS DE TAMAÑO 4
+				 for (i = 0; i < cant; i++)
+				 {
+					 
+					 x = gest->obtenerIng(i);
+					 fila[0] = Convert::ToString(x->getCodigo());
+					 fila[1] = x->getNombre();
+					 fila[2] = x->getApellido();
+					 fila[3] = x->getEspe();
+					 //tengo un arreglo de cadenas 
+					 //Y ahora lo pongo en el Grid
+					 datos->Rows->Add(fila);
+				 }
+			 }
+	//////////////////////////////
+};
 }
