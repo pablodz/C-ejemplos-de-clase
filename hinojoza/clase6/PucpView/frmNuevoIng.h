@@ -8,6 +8,10 @@ namespace PucpView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	/////////////////////////////
+	//Agregamos el Model
+	using namespace PucpModel;
+	/////////////////////////////
 
 	/// <summary>
 	/// Resumen de frmNuevoIng
@@ -44,7 +48,9 @@ namespace PucpView {
 	private: System::Windows::Forms::TextBox^  textApe;
 	private: System::Windows::Forms::TextBox^  textEsp;
 	private: System::Windows::Forms::Button^  btnAceptar;
-
+	////////////////////////////////////////
+	public:Ingeniero^ nuevoIng;
+	////////////////////////////////////////
 	private:
 		/// <summary>
 		/// Variable del diseñador necesaria.
@@ -165,6 +171,15 @@ namespace PucpView {
 		}
 #pragma endregion
 	private: System::Void btnAceptar_Click(System::Object^  sender, System::EventArgs^  e) {
+		//Esto se tendria que hacer en el .cpp pero lo haremos aca por el tiempo
+		int cod = Convert::ToInt32(textCod->Text);
+		String^ nom = textNom->Text;
+		String^ ape = textNom->Text;
+		String^ esp = textNom->Text;
+		Ingeniero^ x = gcnew Ingeniero(cod, nom, ape, esp);
+		nuevoIng = x;
+		//para cerrar la ventana
+		Close();
 	}
 };
 }
